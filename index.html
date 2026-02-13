@@ -1,31 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Protent</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #FFF8E7;
-            font-family: 'Montserrat', sans-serif;
-        }
-        a {
-            font-size: 3rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: #111;
-        }
-        a:hover {
-            opacity: 0.8;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Protent</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFF8E7;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    a {
+        font-size: 3rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #111;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 2px;
+        background-color: #111;
+        margin-left: 4px;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 50%, 100% { opacity: 1; }
+        25%, 75% { opacity: 0; }
+    }
+</style>
 </head>
+
 <body>
-    <a href="https://www.protent.ai">www.protent.ai</a>
+
+<a href="https://www.protent.ai">
+    <span id="text"></span><span class="cursor"></span>
+</a>
+
+<script>
+    const text = "www.protent.ai";
+    const textElement = document.getElementById("text");
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            textElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100); // typing speed
+        }
+    }
+
+    type();
+</script>
+
 </body>
 </html>
